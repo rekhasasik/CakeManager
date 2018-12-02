@@ -38,12 +38,7 @@ public class CakeServlet extends HttpServlet {
 
         System.out.println("downloading cake json");
         
-        Properties systemSettings = System.getProperties();          
-        systemSettings.put("proxySet", "true");         
-        systemSettings.put("http.proxyHost", "www-proxy.us.oracle.com");          
-        systemSettings.put("http.proxyPort", "80");       
-        systemSettings.put("https.proxyHost", "www-proxy.us.oracle.com");          
-        systemSettings.put("https.proxyPort", "80");           
+       
         
         try  {
         	ObjectMapper mapper = new ObjectMapper();
