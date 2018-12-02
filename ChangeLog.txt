@@ -1,0 +1,30 @@
+Change log:
+1. Updated web.xml to include version information to resolve 404 error
+2. Updated pom.xml to add jackson-databind dependency, for automatic conversion of json to CakeEntity object 
+3. updated index.jsp to forward the request to /cakes(servlet mapping). This technique is used to implement first requirement 
+   of the project. The requirement is as follows.
+   * By accessing the root of the server (/) it should be possible to list the cakes currently in the system.  This
+   must be presented in an acceptable format for a human to read.
+4. Updated CakceServlet.java init method to parse the json string(from URL provided) and get list of CakeEntity objects using 
+   jackson databind api. CakeEntity properties have been re-factored to hold right attributes.
+5. Created cakelisting.jsp that lists Cakes in human readable format.
+6. Created addItem.jsp page that uses jquery ajax request to add cake to server. Included this page in cakelisting.jsp.
+   5&6 takes care of first and second requirements of the project.
+7. Updated CakeServlet to remove duplicate entries(cake with same titles) from listing for optimized reporting.
+8. Enhanced CakeServlet doGet method to handle requests for browser based and client based to download json. This covers the  
+   requirement 3 & 4.
+9. CakeServlet doGet method forwards the request to cakelisting.jsp which in turn contain addItem.jsp. This covers fifth 
+   requirement.
+10. CakeServlet.doPost method takes care of adding new cake request. Added addCake method in CakeServlet that reports 
+    duplicate entry errors as alerts.   
+11. basic validations have been taken care for adding a new cake.
+12. Improved exception handling to propagate messages that are useful to user. (like duplicate cake entry)
+13. Added close method to HibernateUtil class for effective closing of resources.
+14. Please ignore Cake.java, CakeStore.java classes as they have been created for initial testing purposes.
+15. Tested the program with a Rest client and verified that http://localhost:8282/cakes returns a downloadable json object.
+
+UI is kept simple catering to given requirements.
+Logging and Exception handling can be improved further. But considering the time limits, I have enhanced the code as per above mentioned change log. 
+
+Tested in firefox 52.7.0, Chrome Version 70.0 and IE 11
+
